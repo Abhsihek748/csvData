@@ -52,8 +52,9 @@ app.get('/',function(req,res){
  let obj = find(countries, country);
 console.log(obj);
  let language = {};
- language.code = obj["Languages"] ;
- language.name = find(languages , obj.Languages)["Name"];
+ language.code = obj["Languages"].split(",")[0] ;
+ console.log(language.code);
+ language.name = find(languages , language.code)["Name"];
   obj["Languages"] = language ;
 
   
