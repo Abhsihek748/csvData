@@ -46,7 +46,9 @@ const find = (data, value)=>{
 }
 
 app.get('/',function(req,res){
+    let data = {};
  let country = req.query.country ;
+ if(country){
  let obj = find(countries, country);
 console.log(obj);
  let language = {};
@@ -54,8 +56,9 @@ console.log(obj);
  language.name = find(languages , obj.Languages)["Name"];
   obj["languages"] = language ;
 
-  let data = {};
+  
   data[country] = obj;
+ }
 
   res.json({"data" :data });
 })
