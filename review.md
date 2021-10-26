@@ -4,6 +4,8 @@
 - Steps for how to setup project in local machine is missing
 - Role of this "fs": "0.0.1-security"?
 - Add inline comments to your code
+- Start script missing in package.json
+
 
 
 
