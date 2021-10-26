@@ -50,17 +50,18 @@ app.get('/',function(req,res){
  let country = req.query.country ;
  if(country){
  let obj = find(countries, country);
-console.log(obj);
- let language = {};
- language.code = obj["Languages"].split(",")[0] ;
+ let language ={};
+ language.code = obj["Languages"];
  console.log(language.code);
+ if(language.code.includes(','))
+ language.code = language.code.split(",")[0] ;
  language.name = find(languages , language.code)["Name"];
   obj["Languages"] = language ;
 
   
   data[country] = obj;
  }
-
+//  console.log(data);
   res.json({"data" :data });
 })
 
