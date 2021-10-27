@@ -51,12 +51,23 @@ app.get('/',function(req,res){
  if(country){
  let obj = find(countries, country);
  let language ={};
- language.code = obj["Languages"];
- console.log(language.code);
- if(language.code.includes(','))
- language.code = language.code.split(",")[0] ;
- language.name = find(languages , language.code)["Name"];
+ let codes = obj["Languages"];
+ console.log(codes);
+ if(codes.includes(',')){
+     language = [];
+     codes = codes.split(",") ;
+     for(let code of codes){
+        let name = find(languages , code)["Name"];   
+        let obj = {code , name};
+        language.push(obj);
+     }
+     obj["Languages"] = language ;
+ }
+ else{
+ language["code"] = codes ;
+ language["name"] = find(languages , language.code)["Name"];
   obj["Languages"] = language ;
+ }
 
   
   data[country] = obj;
